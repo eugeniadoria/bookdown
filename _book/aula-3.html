@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Aula 3 | Introdução ao R</title>
+  <meta name="description" content="Chapter 4 Aula 3 | Introdução ao R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Aula 3 | Introdução ao R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Aula 3 | Introdução ao R" />
+  
+  
+  
+
+<meta name="author" content="Eugênia Cerqueira" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="aula-2.html"/>
+<link rel="next" href="aula-4.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#para-que-usar-o-r"><i class="fa fa-check"></i><b>1.1</b> Para que usar o R?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#instalação"><i class="fa fa-check"></i><b>1.2</b> Instalação</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="aula-1.html"><a href="aula-1.html"><i class="fa fa-check"></i><b>2</b> Aula 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="aula-1.html"><a href="aula-1.html#interface"><i class="fa fa-check"></i><b>2.1</b> Interface</a></li>
+<li class="chapter" data-level="2.2" data-path="aula-1.html"><a href="aula-1.html#instalando-pacotes"><i class="fa fa-check"></i><b>2.2</b> Instalando pacotes</a></li>
+<li class="chapter" data-level="2.3" data-path="aula-1.html"><a href="aula-1.html#carregando-pacotes"><i class="fa fa-check"></i><b>2.3</b> Carregando pacotes</a></li>
+<li class="chapter" data-level="2.4" data-path="aula-1.html"><a href="aula-1.html#carregar-arquivos"><i class="fa fa-check"></i><b>2.4</b> Carregar arquivos</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="aula-1.html"><a href="aula-1.html#arquivos-csv"><i class="fa fa-check"></i><b>2.4.1</b> Arquivos CSV</a></li>
+<li class="chapter" data-level="2.4.2" data-path="aula-1.html"><a href="aula-1.html#arquivos-excel"><i class="fa fa-check"></i><b>2.4.2</b> Arquivos Excel</a></li>
+<li class="chapter" data-level="2.4.3" data-path="aula-1.html"><a href="aula-1.html#arquivos-dta-spss-dat"><i class="fa fa-check"></i><b>2.4.3</b> Arquivos DTA, SPSS, Dat</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="aula-1.html"><a href="aula-1.html#tipos-de-arquivos-no-r"><i class="fa fa-check"></i><b>2.5</b> Tipos de arquivos no R</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="aula-1.html"><a href="aula-1.html#dataframe"><i class="fa fa-check"></i><b>2.5.1</b> Dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="aula-1.html"><a href="aula-1.html#tipos-de-variáveis"><i class="fa fa-check"></i><b>2.6</b> Tipos de variáveis</a></li>
+<li class="chapter" data-level="2.7" data-path="aula-1.html"><a href="aula-1.html#exportar-arquivos"><i class="fa fa-check"></i><b>2.7</b> Exportar arquivos</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="aula-1.html"><a href="aula-1.html#objetos-rds"><i class="fa fa-check"></i><b>2.7.1</b> Objetos RDS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aula-2.html"><a href="aula-2.html"><i class="fa fa-check"></i><b>3</b> Aula 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="aula-2.html"><a href="aula-2.html#resumo-de-variáveis"><i class="fa fa-check"></i><b>3.1</b> Resumo de variáveis</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="aula-2.html"><a href="aula-2.html#variáveis-quantitativas"><i class="fa fa-check"></i><b>3.1.1</b> Variáveis quantitativas</a></li>
+<li class="chapter" data-level="3.1.2" data-path="aula-2.html"><a href="aula-2.html#variáveis-qualitativas"><i class="fa fa-check"></i><b>3.1.2</b> Variáveis qualitativas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="aula-2.html"><a href="aula-2.html#trabalhando-com-nas"><i class="fa fa-check"></i><b>3.2</b> Trabalhando com NAs</a></li>
+<li class="chapter" data-level="3.3" data-path="aula-2.html"><a href="aula-2.html#tabelas"><i class="fa fa-check"></i><b>3.3</b> Tabelas</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="aula-2.html"><a href="aula-2.html#função-table"><i class="fa fa-check"></i><b>3.3.1</b> Função table</a></li>
+<li class="chapter" data-level="3.3.2" data-path="aula-2.html"><a href="aula-2.html#pacote-pollster"><i class="fa fa-check"></i><b>3.3.2</b> Pacote pollster</a></li>
+<li class="chapter" data-level="3.3.3" data-path="aula-2.html"><a href="aula-2.html#pacote-dplyr"><i class="fa fa-check"></i><b>3.3.3</b> Pacote dplyr</a></li>
+<li class="chapter" data-level="3.3.4" data-path="aula-2.html"><a href="aula-2.html#pacote-gt"><i class="fa fa-check"></i><b>3.3.4</b> Pacote GT</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="aula-3.html"><a href="aula-3.html"><i class="fa fa-check"></i><b>4</b> Aula 3</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="aula-3.html"><a href="aula-3.html#criando-variáveis"><i class="fa fa-check"></i><b>4.1</b> Criando variáveis</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="aula-3.html"><a href="aula-3.html#criando-uma-variável"><i class="fa fa-check"></i><b>4.1.1</b> Criando uma variável</a></li>
+<li class="chapter" data-level="4.1.2" data-path="aula-3.html"><a href="aula-3.html#usando-o-comando-ifelse"><i class="fa fa-check"></i><b>4.1.2</b> Usando o comando ifelse</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="aula-3.html"><a href="aula-3.html#filtrar"><i class="fa fa-check"></i><b>4.2</b> Filtrar</a></li>
+<li class="chapter" data-level="4.3" data-path="aula-3.html"><a href="aula-3.html#remover-dados"><i class="fa fa-check"></i><b>4.3</b> Remover dados</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="aula-3.html"><a href="aula-3.html#remover-dados-na"><i class="fa fa-check"></i><b>4.3.1</b> Remover dados na</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="aula-3.html"><a href="aula-3.html#renomear-variáveis"><i class="fa fa-check"></i><b>4.4</b> Renomear variáveis</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="aula-4.html"><a href="aula-4.html"><i class="fa fa-check"></i><b>5</b> Aula 4</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="aula-4.html"><a href="aula-4.html#junção-de-dados"><i class="fa fa-check"></i><b>5.1</b> Junção de dados</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="aula-4.html"><a href="aula-4.html#união-de-dados"><i class="fa fa-check"></i><b>5.1.1</b> União de dados</a></li>
+<li class="chapter" data-level="5.1.2" data-path="aula-4.html"><a href="aula-4.html#cruzamento-de-dados"><i class="fa fa-check"></i><b>5.1.2</b> Cruzamento de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="aula-4.html"><a href="aula-4.html#remover-dados-duplicados"><i class="fa fa-check"></i><b>5.2</b> Remover dados duplicados</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aula-5.html"><a href="aula-5.html"><i class="fa fa-check"></i><b>6</b> Aula 5</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="aula-5.html"><a href="aula-5.html#visualização-de-variáveis"><i class="fa fa-check"></i><b>6.1</b> Visualização de variáveis</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="aula-5.html"><a href="aula-5.html#pacote-ggplot2"><i class="fa fa-check"></i><b>6.1.1</b> Pacote ggplot2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glossário.html"><a href="glossário.html"><i class="fa fa-check"></i><b>7</b> Glossário</a></li>
+<li class="chapter" data-level="8" data-path="pacotes.html"><a href="pacotes.html"><i class="fa fa-check"></i><b>8</b> Pacotes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="pacotes.html"><a href="pacotes.html#dplyr"><i class="fa fa-check"></i><b>8.1</b> dplyr</a></li>
+<li class="chapter" data-level="8.2" data-path="pacotes.html"><a href="pacotes.html#ggplot"><i class="fa fa-check"></i><b>8.2</b> ggplot</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cheatsheets.html"><a href="cheatsheets.html"><i class="fa fa-check"></i><b>9</b> Cheatsheets</a></li>
+<li class="chapter" data-level="10" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i><b>10</b> Referências</a></li>
+<li class="chapter" data-level="11" data-path="avaliação.html"><a href="avaliação.html"><i class="fa fa-check"></i><b>11</b> Avaliação</a></li>
+<li class="chapter" data-level="12" data-path="hello-bookdown.html"><a href="hello-bookdown.html"><i class="fa fa-check"></i><b>12</b> Hello bookdown</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="hello-bookdown.html"><a href="hello-bookdown.html#a-section"><i class="fa fa-check"></i><b>12.1</b> A section</a>
+<ul>
+<li class="chapter" data-level="" data-path="hello-bookdown.html"><a href="hello-bookdown.html#an-unnumbered-section"><i class="fa fa-check"></i>An unnumbered section</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>13</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>13.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="13.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>13.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>14</b> Parts</a></li>
+<li class="chapter" data-level="15" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>15</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>15.1</b> Footnotes</a></li>
+<li class="chapter" data-level="15.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>15.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>16</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>16.1</b> Equations</a></li>
+<li class="chapter" data-level="16.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>16.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="16.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>16.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>17</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>17.1</b> Publishing</a></li>
+<li class="chapter" data-level="17.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>17.2</b> 404 pages</a></li>
+<li class="chapter" data-level="17.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>17.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introdução ao R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="aula-3" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">Chapter 4</span> Aula 3<a href="aula-3.html#aula-3" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>No dia a dia de quem trabalha com dados, infelizmente, é muito comum se deparar com dados formatados de um jeito bastante complicado de se manipular. Isso acontece pois a forma de se trabalhar com dados é muito diferente da forma de se apresentar ou visualizar dados. Resumindo: ler dados requer uma estrutura bem diferente de manipular dados. Limpeza de dados também é considerada parte da manipulação de dados.</p>
+<div id="criando-variáveis" class="section level2 hasAnchor" number="4.1">
+<h2><span class="header-section-number">4.1</span> Criando variáveis<a href="aula-3.html#criando-variáveis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Esta seção se concentra na criação de novas variáveis para sua análise como parte de uma estratégia geral de limpeza de seus dados. Muitas vezes, os dados chegarão a nós codificados de uma certa maneira, mas podemos desejar transformá-los para torná-los mais fáceis de se trabalhar.</p>
+<p>Nossas análises frequentemente se concentram em mudanças lineares em uma variável dada, mas os dados geralmente não são codificados de forma a representar esses tipos de diferenças.</p>
+<div id="criando-uma-variável" class="section level3 hasAnchor" number="4.1.1">
+<h3><span class="header-section-number">4.1.1</span> Criando uma variável<a href="aula-3.html#criando-uma-variável" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="usando-o-comando-ifelse" class="section level3 hasAnchor" number="4.1.2">
+<h3><span class="header-section-number">4.1.2</span> Usando o comando ifelse<a href="aula-3.html#usando-o-comando-ifelse" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O comando ifelse é lido como uma frase.</p>
+<p><img src="../ifelse.png" width="90%" /></p>
+<p>Digamos que queremos criar uma nova variável que nos indique se determinado indivíduo na nossa base de dados é um trabalhador autônomo ou não.</p>
+<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="aula-3.html#cb44-1" tabindex="-1"></a>dados<span class="sc">$</span>autonomo<span class="ot">&lt;-</span><span class="fu">ifelse</span>(dados<span class="sc">$</span>trabalho<span class="sc">==</span><span class="st">&quot;autônomo&quot;</span>,<span class="st">&quot;sim&quot;</span>,<span class="st">&quot;não&quot;</span>)</span>
+<span id="cb44-2"><a href="aula-3.html#cb44-2" tabindex="-1"></a><span class="fu">head</span>(dados<span class="sc">$</span>autonomo)</span></code></pre></div>
+<pre><code>## [1] &quot;sim&quot; &quot;não&quot; &quot;sim&quot; &quot;não&quot; &quot;não&quot; &quot;não&quot;</code></pre>
+<p><em>Maior e menor que</em></p>
+<p>Vamos utilizar a variável idade para mostrar a utilidade dos operadores matemáticos “maior que” e “menor que”. Digamos que queremos criar uma nova variável qualitativa que mostre quem são os idosos na nossa base de dados.</p>
+<p>Pedimos ao R para selecionar todas observações igual ou maiores que 60 da variável idosos. Se essa condição for preenchida, queremos que na nova variável tenhamos uma categoria “Idosos”.</p>
+<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="aula-3.html#cb46-1" tabindex="-1"></a>dados<span class="sc">$</span>idadeQ<span class="ot">&lt;-</span><span class="fu">ifelse</span>(dados<span class="sc">$</span>idade<span class="sc">&gt;=</span><span class="dv">60</span>,<span class="st">&quot;Idosos&quot;</span>,<span class="st">&quot;Não Idosos&quot;</span>)</span></code></pre></div>
+<p>Após realizar o comando podemos abrir o dataframe para verificar se a nova coluna foi corretamente criada.</p>
+<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb47-1"><a href="aula-3.html#cb47-1" tabindex="-1"></a><span class="fu">head</span>(dados<span class="sc">$</span>idadeQ)</span></code></pre></div>
+<pre><code>## [1] &quot;Não Idosos&quot; &quot;Não Idosos&quot; &quot;Não Idosos&quot; &quot;Não Idosos&quot; &quot;Não Idosos&quot; &quot;Não Idosos&quot;</code></pre>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="aula-3.html#cb49-1" tabindex="-1"></a>my_tbl <span class="ot">&lt;-</span> tibble<span class="sc">::</span><span class="fu">tribble</span>(</span>
+<span id="cb49-2"><a href="aula-3.html#cb49-2" tabindex="-1"></a>  <span class="sc">~</span>Col_1, <span class="sc">~</span>Col_2, </span>
+<span id="cb49-3"><a href="aula-3.html#cb49-3" tabindex="-1"></a>      <span class="cn">NA</span>,     <span class="cn">NA</span>,     </span>
+<span id="cb49-4"><a href="aula-3.html#cb49-4" tabindex="-1"></a>      <span class="cn">NA</span>,     <span class="cn">NA</span>,     </span>
+<span id="cb49-5"><a href="aula-3.html#cb49-5" tabindex="-1"></a>      <span class="cn">NA</span>,     <span class="cn">NA</span>,     </span>
+<span id="cb49-6"><a href="aula-3.html#cb49-6" tabindex="-1"></a>      <span class="cn">NA</span>,     <span class="cn">NA</span>,     </span>
+<span id="cb49-7"><a href="aula-3.html#cb49-7" tabindex="-1"></a>  )</span>
+<span id="cb49-8"><a href="aula-3.html#cb49-8" tabindex="-1"></a></span>
+<span id="cb49-9"><a href="aula-3.html#cb49-9" tabindex="-1"></a><span class="fu">require</span>(knitr)</span></code></pre></div>
+<pre><code>## Loading required package: knitr</code></pre>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="aula-3.html#cb51-1" tabindex="-1"></a><span class="fu">kable</span>(my_tbl, <span class="at">digits =</span> <span class="dv">3</span>, <span class="at">row.names =</span> <span class="cn">FALSE</span>, <span class="at">align =</span> <span class="st">&quot;c&quot;</span>,</span>
+<span id="cb51-2"><a href="aula-3.html#cb51-2" tabindex="-1"></a>              <span class="at">caption =</span> <span class="cn">NULL</span>)</span></code></pre></div>
+<table>
+<thead>
+<tr class="header">
+<th align="center">Col_1</th>
+<th align="center">Col_2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="odd">
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+<tr class="even">
+<td align="center">NA</td>
+<td align="center">NA</td>
+</tr>
+</tbody>
+</table>
+<p>Vamos complexificar um pouco mais. Digamos que agora nós queremos 3 categorias.
+Todos indivíduos com menos 40 anos serão classificados como jovem adultos. De 40 a 59 anos, como adultos e mais de 60 anos, como idosos.</p>
+<p>O operador &amp; é utilizado para indicar que temos que obedecer mais de uma condição ao mesmo tempo.</p>
+<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="aula-3.html#cb52-1" tabindex="-1"></a>dados<span class="sc">$</span>idadeQ<span class="ot">&lt;-</span><span class="fu">ifelse</span>(dados<span class="sc">$</span>idade<span class="sc">&lt;</span><span class="dv">40</span>,<span class="st">&quot;Jovem adultos&quot;</span>,<span class="fu">ifelse</span>(dados<span class="sc">$</span>idade<span class="sc">&gt;=</span><span class="dv">40</span> <span class="sc">&amp;</span> dados<span class="sc">$</span>idade<span class="sc">&lt;</span><span class="dv">60</span>, <span class="st">&quot;Adultos&quot;</span>,<span class="st">&quot;Idosos&quot;</span>))</span></code></pre></div>
+</div>
+</div>
+<div id="filtrar" class="section level2 hasAnchor" number="4.2">
+<h2><span class="header-section-number">4.2</span> Filtrar<a href="aula-3.html#filtrar" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>A filtragem de variáveis pode ser feita através do comando subset.</p>
+<p>Repare que o novo dataframe dadosf contém 4314 observações, pois abarca apenas os indivíduos mais jovens que 60 anos.</p>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="aula-3.html#cb53-1" tabindex="-1"></a>dadosf<span class="ot">&lt;-</span><span class="fu">subset</span>(dados, idade <span class="sc">&lt;</span> <span class="dv">60</span>)</span>
+<span id="cb53-2"><a href="aula-3.html#cb53-2" tabindex="-1"></a><span class="fu">summary</span>(dadosf)</span></code></pre></div>
+<pre><code>##        X           status          tempo_empresa      moradia         
+##  Min.   :   1   Length:4314        Min.   : 0.000   Length:4314       
+##  1st Qu.:1115   Class :character   1st Qu.: 2.000   Class :character  
+##  Median :2230   Mode  :character   Median : 5.000   Mode  :character  
+##  Mean   :2229                      Mean   : 7.743                     
+##  3rd Qu.:3336                      3rd Qu.:12.000                     
+##  Max.   :4454                      Max.   :43.000                     
+##                                                                       
+##  tempo_emprestimo     idade       estado_civil        registros        
+##  Min.   : 6.00    Min.   :18.00   Length:4314        Length:4314       
+##  1st Qu.:36.00    1st Qu.:28.00   Class :character   Class :character  
+##  Median :48.00    Median :35.00   Mode  :character   Mode  :character  
+##  Mean   :46.57    Mean   :36.26                                        
+##  3rd Qu.:60.00    3rd Qu.:44.00                                        
+##  Max.   :72.00    Max.   :59.00                                        
+##                                                                        
+##    trabalho            despesas          renda           ativos      
+##  Length:4314        Min.   : 35.00   Min.   :  8.0   Min.   :     0  
+##  Class :character   1st Qu.: 35.00   1st Qu.: 90.0   1st Qu.:     0  
+##  Mode  :character   Median : 51.00   Median :125.0   Median :  3000  
+##                     Mean   : 55.72   Mean   :141.5   Mean   :  5207  
+##                     3rd Qu.: 74.00   3rd Qu.:170.0   3rd Qu.:  6000  
+##                     Max.   :180.00   Max.   :959.0   Max.   :300000  
+##                                      NA&#39;s   :374     NA&#39;s   :46      
+##     dividas        valor_emprestimo  preco_do_bem     autonomo        
+##  Min.   :    0.0   Min.   : 100     Min.   :  105   Length:4314       
+##  1st Qu.:    0.0   1st Qu.: 700     1st Qu.: 1125   Class :character  
+##  Median :    0.0   Median :1000     Median : 1410   Mode  :character  
+##  Mean   :  346.9   Mean   :1043     Mean   : 1468                     
+##  3rd Qu.:    0.0   3rd Qu.:1300     3rd Qu.: 1698                     
+##  Max.   :30000.0   Max.   :5000     Max.   :11140                     
+##  NA&#39;s   :17                                                           
+##     idadeQ         
+##  Length:4314       
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+## </code></pre>
+<p>O comando subset permite selecionar apenas as colunas desejadas</p>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="aula-3.html#cb55-1" tabindex="-1"></a>dadosf<span class="ot">&lt;-</span><span class="fu">subset</span>(dados, <span class="at">select=</span><span class="fu">c</span>(<span class="st">&quot;moradia&quot;</span>,<span class="st">&quot;status&quot;</span>,<span class="st">&quot;idade&quot;</span>))</span>
+<span id="cb55-2"><a href="aula-3.html#cb55-2" tabindex="-1"></a><span class="fu">head</span>(dadosf)</span></code></pre></div>
+<pre><code>##   moradia status idade
+## 1 alugada    bom    30
+## 2 alugada    bom    58
+## 3 própria   ruim    46
+## 4 alugada    bom    24
+## 5 alugada    bom    26
+## 6 própria    bom    36</code></pre>
+<p>Digamos que queremos montar uma tabela apenas com indivíduos cuja moradia é própria ou alugada.</p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="aula-3.html#cb57-1" tabindex="-1"></a>dadosmoradia<span class="ot">&lt;-</span><span class="fu">subset</span>(dados, moradia <span class="sc">==</span> <span class="st">&quot;alugada&quot;</span>)</span>
+<span id="cb57-2"><a href="aula-3.html#cb57-2" tabindex="-1"></a><span class="fu">summary</span>(dadosmoradia)</span></code></pre></div>
+<pre><code>##        X           status          tempo_empresa      moradia         
+##  Min.   :   1   Length:973         Min.   : 0.000   Length:973        
+##  1st Qu.:1070   Class :character   1st Qu.: 1.000   Class :character  
+##  Median :2100   Mode  :character   Median : 4.000   Mode  :character  
+##  Mean   :2166                      Mean   : 6.881                     
+##  3rd Qu.:3293                      3rd Qu.:10.000                     
+##  Max.   :4453                      Max.   :40.000                     
+##                                                                       
+##  tempo_emprestimo     idade       estado_civil        registros        
+##  Min.   : 6.00    Min.   :18.00   Length:973         Length:973        
+##  1st Qu.:36.00    1st Qu.:29.00   Class :character   Class :character  
+##  Median :48.00    Median :36.00   Mode  :character   Mode  :character  
+##  Mean   :47.55    Mean   :36.71                                        
+##  3rd Qu.:60.00    3rd Qu.:43.00                                        
+##  Max.   :60.00    Max.   :68.00                                        
+##                                                                        
+##    trabalho            despesas          renda           ativos      
+##  Length:973         Min.   : 35.00   Min.   : 22.0   Min.   :     0  
+##  Class :character   1st Qu.: 49.00   1st Qu.: 93.0   1st Qu.:     0  
+##  Mode  :character   Median : 60.00   Median :125.0   Median :     0  
+##                     Mean   : 65.45   Mean   :140.7   Mean   :  1477  
+##                     3rd Qu.: 78.00   3rd Qu.:170.0   3rd Qu.:     0  
+##                     Max.   :173.00   Max.   :535.0   Max.   :100000  
+##                                      NA&#39;s   :86      NA&#39;s   :4       
+##     dividas         valor_emprestimo  preco_do_bem     autonomo        
+##  Min.   :    0.00   Min.   : 100     Min.   :  125   Length:973        
+##  1st Qu.:    0.00   1st Qu.: 700     1st Qu.: 1044   Class :character  
+##  Median :    0.00   Median :1000     Median : 1350   Mode  :character  
+##  Mean   :   97.94   Mean   :1027     Mean   : 1386                     
+##  3rd Qu.:    0.00   3rd Qu.:1300     3rd Qu.: 1636                     
+##  Max.   :21400.00   Max.   :3800     Max.   :11140                     
+##  NA&#39;s   :2                                                             
+##     idadeQ         
+##  Length:973        
+##  Class :character  
+##  Mode  :character  
+##                    
+##                    
+##                    
+## </code></pre>
+</div>
+<div id="remover-dados" class="section level2 hasAnchor" number="4.3">
+<h2><span class="header-section-number">4.3</span> Remover dados<a href="aula-3.html#remover-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Using the select() verb, we can answer interesting questions about our dataset by focusing in on related groups of verbs. The colon (:) is useful for getting many columns at a time.</p>
+<div id="remover-dados-na" class="section level3 hasAnchor" number="4.3.1">
+<h3><span class="header-section-number">4.3.1</span> Remover dados na<a href="aula-3.html#remover-dados-na" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+</div>
+<div id="renomear-variáveis" class="section level2 hasAnchor" number="4.4">
+<h2><span class="header-section-number">4.4</span> Renomear variáveis<a href="aula-3.html#renomear-variáveis" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Às vezes será necessário renomear as variáveis no nosso dataframe.</p>
+<p>Carregamos o pacote dplyr</p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="aula-3.html#cb59-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="aula-3.html#cb60-1" tabindex="-1"></a>dados <span class="ot">&lt;-</span> dados <span class="sc">%&gt;%</span> <span class="fu">rename</span>(<span class="at">teste =</span> estado_civil)</span></code></pre></div>
+<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb61-1"><a href="aula-3.html#cb61-1" tabindex="-1"></a><span class="fu">head</span>(dados)</span></code></pre></div>
+<pre><code>##   X status tempo_empresa moradia tempo_emprestimo idade       teste registros
+## 1 1    bom             9 alugada               60    30   casada(o)       não
+## 2 2    bom            17 alugada               60    58    viúva(o)       não
+## 3 3   ruim            10 própria               36    46   casada(o)       sim
+## 4 4    bom             0 alugada               60    24 solteira(o)       não
+## 5 5    bom             0 alugada               36    26 solteira(o)       não
+## 6 6    bom             1 própria               60    36   casada(o)       não
+##   trabalho despesas renda ativos dividas valor_emprestimo preco_do_bem autonomo
+## 1 autônomo       73   129      0       0              800          846      sim
+## 2     fixo       48   131      0       0             1000         1658      não
+## 3 autônomo       90   200   3000       0             2000         2985      sim
+## 4     fixo       63   182   2500       0              900         1325      não
+## 5     fixo       46   107      0       0              310          910      não
+## 6     fixo       75   214   3500       0              650         1645      não
+##          idadeQ
+## 1 Jovem adultos
+## 2       Adultos
+## 3       Adultos
+## 4 Jovem adultos
+## 5 Jovem adultos
+## 6 Jovem adultos</code></pre>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="aula-2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="aula-4.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

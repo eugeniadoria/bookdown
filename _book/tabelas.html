@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>3.3 Tabelas | Introdução ao R</title>
+  <meta name="description" content="3.3 Tabelas | Introdução ao R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="3.3 Tabelas | Introdução ao R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="3.3 Tabelas | Introdução ao R" />
+  
+  
+  
+
+<meta name="author" content="Eugênia Cerqueira" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="trabalhando-com-nas.html"/>
+<link rel="next" href="aula-3.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="para-que-usar-o-r.html"><a href="para-que-usar-o-r.html"><i class="fa fa-check"></i><b>1.1</b> Para que usar o R?</a></li>
+<li class="chapter" data-level="1.2" data-path="instalação.html"><a href="instalação.html"><i class="fa fa-check"></i><b>1.2</b> Instalação</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="aula-1.html"><a href="aula-1.html"><i class="fa fa-check"></i><b>2</b> Aula 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="interface.html"><a href="interface.html"><i class="fa fa-check"></i><b>2.1</b> Interface</a></li>
+<li class="chapter" data-level="2.2" data-path="instalando-pacotes.html"><a href="instalando-pacotes.html"><i class="fa fa-check"></i><b>2.2</b> Instalando pacotes</a></li>
+<li class="chapter" data-level="2.3" data-path="carregando-pacotes.html"><a href="carregando-pacotes.html"><i class="fa fa-check"></i><b>2.3</b> Carregando pacotes</a></li>
+<li class="chapter" data-level="2.4" data-path="carregar-arquivos.html"><a href="carregar-arquivos.html"><i class="fa fa-check"></i><b>2.4</b> Carregar arquivos</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="carregar-arquivos.html"><a href="carregar-arquivos.html#arquivos-csv"><i class="fa fa-check"></i><b>2.4.1</b> Arquivos CSV</a></li>
+<li class="chapter" data-level="2.4.2" data-path="carregar-arquivos.html"><a href="carregar-arquivos.html#arquivos-excel"><i class="fa fa-check"></i><b>2.4.2</b> Arquivos Excel</a></li>
+<li class="chapter" data-level="2.4.3" data-path="carregar-arquivos.html"><a href="carregar-arquivos.html#arquivos-dta-spss-dat"><i class="fa fa-check"></i><b>2.4.3</b> Arquivos DTA, SPSS, Dat</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="tipos-de-arquivos-no-r.html"><a href="tipos-de-arquivos-no-r.html"><i class="fa fa-check"></i><b>2.5</b> Tipos de arquivos no R</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="tipos-de-arquivos-no-r.html"><a href="tipos-de-arquivos-no-r.html#dataframe"><i class="fa fa-check"></i><b>2.5.1</b> Dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="tipos-de-variáveis.html"><a href="tipos-de-variáveis.html"><i class="fa fa-check"></i><b>2.6</b> Tipos de variáveis</a></li>
+<li class="chapter" data-level="2.7" data-path="exportar-arquivos.html"><a href="exportar-arquivos.html"><i class="fa fa-check"></i><b>2.7</b> Exportar arquivos</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="exportar-arquivos.html"><a href="exportar-arquivos.html#objetos-rds"><i class="fa fa-check"></i><b>2.7.1</b> Objetos RDS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aula-2.html"><a href="aula-2.html"><i class="fa fa-check"></i><b>3</b> Aula 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="resumo-de-variáveis.html"><a href="resumo-de-variáveis.html"><i class="fa fa-check"></i><b>3.1</b> Resumo de variáveis</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="resumo-de-variáveis.html"><a href="resumo-de-variáveis.html#variáveis-quantitativas"><i class="fa fa-check"></i><b>3.1.1</b> Variáveis quantitativas</a></li>
+<li class="chapter" data-level="3.1.2" data-path="resumo-de-variáveis.html"><a href="resumo-de-variáveis.html#variáveis-qualitativas"><i class="fa fa-check"></i><b>3.1.2</b> Variáveis qualitativas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="trabalhando-com-nas.html"><a href="trabalhando-com-nas.html"><i class="fa fa-check"></i><b>3.2</b> Trabalhando com NAs</a></li>
+<li class="chapter" data-level="3.3" data-path="tabelas.html"><a href="tabelas.html"><i class="fa fa-check"></i><b>3.3</b> Tabelas</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="tabelas.html"><a href="tabelas.html#função-table"><i class="fa fa-check"></i><b>3.3.1</b> Função table</a></li>
+<li class="chapter" data-level="3.3.2" data-path="tabelas.html"><a href="tabelas.html#pacote-pollster"><i class="fa fa-check"></i><b>3.3.2</b> Pacote pollster</a></li>
+<li class="chapter" data-level="3.3.3" data-path="tabelas.html"><a href="tabelas.html#pacote-dplyr"><i class="fa fa-check"></i><b>3.3.3</b> Pacote dplyr</a></li>
+<li class="chapter" data-level="3.3.4" data-path="tabelas.html"><a href="tabelas.html#pacote-gt"><i class="fa fa-check"></i><b>3.3.4</b> Pacote GT</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="aula-3.html"><a href="aula-3.html"><i class="fa fa-check"></i><b>4</b> Aula 3</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="criando-variáveis.html"><a href="criando-variáveis.html"><i class="fa fa-check"></i><b>4.1</b> Criando variáveis</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="criando-variáveis.html"><a href="criando-variáveis.html#criando-uma-variável"><i class="fa fa-check"></i><b>4.1.1</b> Criando uma variável</a></li>
+<li class="chapter" data-level="4.1.2" data-path="criando-variáveis.html"><a href="criando-variáveis.html#usando-o-comando-ifelse"><i class="fa fa-check"></i><b>4.1.2</b> Usando o comando ifelse</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="filtrar.html"><a href="filtrar.html"><i class="fa fa-check"></i><b>4.2</b> Filtrar</a></li>
+<li class="chapter" data-level="4.3" data-path="remover-dados.html"><a href="remover-dados.html"><i class="fa fa-check"></i><b>4.3</b> Remover dados</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="remover-dados.html"><a href="remover-dados.html#remover-dados-na"><i class="fa fa-check"></i><b>4.3.1</b> Remover dados na</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="renomear-variáveis.html"><a href="renomear-variáveis.html"><i class="fa fa-check"></i><b>4.4</b> Renomear variáveis</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="aula-4.html"><a href="aula-4.html"><i class="fa fa-check"></i><b>5</b> Aula 4</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="junção-de-dados.html"><a href="junção-de-dados.html"><i class="fa fa-check"></i><b>5.1</b> Junção de dados</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="junção-de-dados.html"><a href="junção-de-dados.html#união-de-dados"><i class="fa fa-check"></i><b>5.1.1</b> União de dados</a></li>
+<li class="chapter" data-level="5.1.2" data-path="junção-de-dados.html"><a href="junção-de-dados.html#cruzamento-de-dados"><i class="fa fa-check"></i><b>5.1.2</b> Cruzamento de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="remover-dados-duplicados.html"><a href="remover-dados-duplicados.html"><i class="fa fa-check"></i><b>5.2</b> Remover dados duplicados</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aula-5.html"><a href="aula-5.html"><i class="fa fa-check"></i><b>6</b> Aula 5</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="visualização-de-variáveis.html"><a href="visualização-de-variáveis.html"><i class="fa fa-check"></i><b>6.1</b> Visualização de variáveis</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="visualização-de-variáveis.html"><a href="visualização-de-variáveis.html#pacote-ggplot2"><i class="fa fa-check"></i><b>6.1.1</b> Pacote ggplot2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glossário.html"><a href="glossário.html"><i class="fa fa-check"></i><b>7</b> Glossário</a></li>
+<li class="chapter" data-level="8" data-path="pacotes.html"><a href="pacotes.html"><i class="fa fa-check"></i><b>8</b> Pacotes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="dplyr.html"><a href="dplyr.html"><i class="fa fa-check"></i><b>8.1</b> dplyr</a></li>
+<li class="chapter" data-level="8.2" data-path="ggplot.html"><a href="ggplot.html"><i class="fa fa-check"></i><b>8.2</b> ggplot</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cheatsheets.html"><a href="cheatsheets.html"><i class="fa fa-check"></i><b>9</b> Cheatsheets</a></li>
+<li class="chapter" data-level="10" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i><b>10</b> Referências</a></li>
+<li class="chapter" data-level="11" data-path="avaliação.html"><a href="avaliação.html"><i class="fa fa-check"></i><b>11</b> Avaliação</a></li>
+<li class="chapter" data-level="12" data-path="hello-bookdown.html"><a href="hello-bookdown.html"><i class="fa fa-check"></i><b>12</b> Hello bookdown</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="a-section.html"><a href="a-section.html"><i class="fa fa-check"></i><b>12.1</b> A section</a>
+<ul>
+<li class="chapter" data-level="" data-path="a-section.html"><a href="a-section.html#an-unnumbered-section"><i class="fa fa-check"></i>An unnumbered section</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>13</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="chapters-and-sub-chapters.html"><a href="chapters-and-sub-chapters.html"><i class="fa fa-check"></i><b>13.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="13.2" data-path="captioned-figures-and-tables.html"><a href="captioned-figures-and-tables.html"><i class="fa fa-check"></i><b>13.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>14</b> Parts</a></li>
+<li class="chapter" data-level="15" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>15</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="footnotes.html"><a href="footnotes.html"><i class="fa fa-check"></i><b>15.1</b> Footnotes</a></li>
+<li class="chapter" data-level="15.2" data-path="citations.html"><a href="citations.html"><i class="fa fa-check"></i><b>15.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>16</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="equations.html"><a href="equations.html"><i class="fa fa-check"></i><b>16.1</b> Equations</a></li>
+<li class="chapter" data-level="16.2" data-path="theorems-and-proofs.html"><a href="theorems-and-proofs.html"><i class="fa fa-check"></i><b>16.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="16.3" data-path="callout-blocks.html"><a href="callout-blocks.html"><i class="fa fa-check"></i><b>16.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>17</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="publishing.html"><a href="publishing.html"><i class="fa fa-check"></i><b>17.1</b> Publishing</a></li>
+<li class="chapter" data-level="17.2" data-path="pages.html"><a href="pages.html"><i class="fa fa-check"></i><b>17.2</b> 404 pages</a></li>
+<li class="chapter" data-level="17.3" data-path="metadata-for-sharing.html"><a href="metadata-for-sharing.html"><i class="fa fa-check"></i><b>17.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introdução ao R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="tabelas" class="section level2 hasAnchor" number="3.3">
+<h2><span class="header-section-number">3.3</span> Tabelas<a href="tabelas.html#tabelas" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="função-table" class="section level3 hasAnchor" number="3.3.1">
+<h3><span class="header-section-number">3.3.1</span> Função table<a href="tabelas.html#função-table" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Para criar tabelas o R possui a função table, incorporado ao seu próprio sistema.</p>
+<p>Por exemplo, vamos começar criando uma tabela que mostre a divisão da variável
+Moradia, por categoria.</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="tabelas.html#cb26-1" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>moradia)</span></code></pre></div>
+<pre><code>## 
+## alugada  outras    pais    priv própria 
+##     973     319     783     246    2107</code></pre>
+<p>Podemos também criar uma tabela de contingência, cruzando duas variáveis qualitativas</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="tabelas.html#cb28-1" tabindex="-1"></a><span class="fu">table</span>(dados<span class="sc">$</span>moradia, dados<span class="sc">$</span>status)</span></code></pre></div>
+<pre><code>##          
+##            bom ruim
+##   alugada  585  388
+##   outras   173  146
+##   pais     550  233
+##   priv     162   84
+##   própria 1717  390</code></pre>
+</div>
+<div id="pacote-pollster" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Pacote pollster<a href="tabelas.html#pacote-pollster" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O pacote pollster permite a realização de tabelas ponderadas. É muito útil para se trabalhar com dados de pesquisas como censo etc.</p>
+<p>Como exemplo, usaremos dados da pesquisa de origem e destino de Belo Horizonte (Fundação João Pinheiro, 2012).</p>
+<p>Os resultados da tabela mostram a frequência de observações ponderadas pelo fator, o percentual de cada categoria e o percentual acumulado.</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="tabelas.html#cb30-1" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb30-2"><a href="tabelas.html#cb30-2" tabindex="-1"></a>idosos<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">&quot;/Users/eugeniaviana/Documents/Documents/Eugenia/Sociologia/MQ/Idosos.xlsx&quot;</span>)</span></code></pre></div>
+<p>A função topline permite criar uma tabela ponderada a partir de uma variável. No comando weight = indicamos a variável correspondente ao fator de ponderação.</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="tabelas.html#cb31-1" tabindex="-1"></a><span class="fu">library</span>(pollster)</span>
+<span id="cb31-2"><a href="tabelas.html#cb31-2" tabindex="-1"></a><span class="fu">topline</span>(<span class="at">df =</span> idosos, <span class="at">variable =</span> UDM, <span class="at">weight =</span> Fator)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 5
+##   Response             Frequency Percent `Valid Percent` `Cumulative Percent`
+##   &lt;fct&gt;                    &lt;dbl&gt;   &lt;dbl&gt;           &lt;dbl&gt;                &lt;dbl&gt;
+## 1 1 - Sozinhos           284887.  25.2            25.2                   25.2
+## 2 2 - Casal              306168.  27.1            27.1                   52.4
+## 3 3 - Casal com filhos   332010.  29.4            29.4                   81.8
+## 4 4 - Monoparental       203492.  18.0            18.0                   99.8
+## 5 5 - Outros               2469.   0.219           0.219                100</code></pre>
+<p>Já função crosstab permite criar uma tabela de contingência ponderada, a partir de duas variáveis.</p>
+<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb33-1"><a href="tabelas.html#cb33-1" tabindex="-1"></a><span class="fu">crosstab</span>(<span class="at">df =</span> idosos, <span class="at">x =</span> UDM, <span class="at">y =</span> Sexo, <span class="at">weight =</span> Fator)</span></code></pre></div>
+<pre><code>## # A tibble: 5 × 4
+##   UDM                  Feminino Masculino       n
+##   &lt;fct&gt;                   &lt;dbl&gt;     &lt;dbl&gt;   &lt;dbl&gt;
+## 1 1 - Sozinhos             72.2      27.8 284887.
+## 2 2 - Casal                46.1      53.9 306168.
+## 3 3 - Casal com filhos     39.3      60.7 332010.
+## 4 4 - Monoparental         80.5      19.5 203492.
+## 5 5 - Outros               84.8      15.2   2469.</code></pre>
+</div>
+<div id="pacote-dplyr" class="section level3 hasAnchor" number="3.3.3">
+<h3><span class="header-section-number">3.3.3</span> Pacote dplyr<a href="tabelas.html#pacote-dplyr" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="tabelas.html#cb35-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+</div>
+<div id="pacote-gt" class="section level3 hasAnchor" number="3.3.4">
+<h3><span class="header-section-number">3.3.4</span> Pacote GT<a href="tabelas.html#pacote-gt" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>O pacote gt é um pacote relativamente novo que permite a apresentação de tabelas de maneira limpa e organizada</p>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="tabelas.html#cb36-1" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb36-2"><a href="tabelas.html#cb36-2" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span></code></pre></div>
+<p>Tabela de resumo</p>
+<div class="sourceCode" id="cb37"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb37-1"><a href="tabelas.html#cb37-1" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb37-2"><a href="tabelas.html#cb37-2" tabindex="-1"></a>  <span class="fu">select</span>(moradia,status,idade) <span class="sc">%&gt;%</span> </span>
+<span id="cb37-3"><a href="tabelas.html#cb37-3" tabindex="-1"></a>  <span class="fu">tbl_summary</span>()</span></code></pre></div>
+<div id="fbevjnfehf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#fbevjnfehf table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#fbevjnfehf thead, #fbevjnfehf tbody, #fbevjnfehf tfoot, #fbevjnfehf tr, #fbevjnfehf td, #fbevjnfehf th {
+  border-style: none;
+}
+
+#fbevjnfehf p {
+  margin: 0;
+  padding: 0;
+}
+
+#fbevjnfehf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fbevjnfehf .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fbevjnfehf .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fbevjnfehf .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#fbevjnfehf .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#fbevjnfehf .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#fbevjnfehf .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#fbevjnfehf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#fbevjnfehf .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#fbevjnfehf .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#fbevjnfehf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#fbevjnfehf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fbevjnfehf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fbevjnfehf .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#fbevjnfehf .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fbevjnfehf .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#fbevjnfehf .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#fbevjnfehf .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#fbevjnfehf .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fbevjnfehf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#fbevjnfehf .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fbevjnfehf .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#fbevjnfehf .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fbevjnfehf .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#fbevjnfehf .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#fbevjnfehf .gt_left {
+  text-align: left;
+}
+
+#fbevjnfehf .gt_center {
+  text-align: center;
+}
+
+#fbevjnfehf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fbevjnfehf .gt_font_normal {
+  font-weight: normal;
+}
+
+#fbevjnfehf .gt_font_bold {
+  font-weight: bold;
+}
+
+#fbevjnfehf .gt_font_italic {
+  font-style: italic;
+}
+
+#fbevjnfehf .gt_super {
+  font-size: 65%;
+}
+
+#fbevjnfehf .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#fbevjnfehf .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#fbevjnfehf .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#fbevjnfehf .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#fbevjnfehf .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#fbevjnfehf .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#fbevjnfehf .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Characteristic&lt;/strong&gt;"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;N = 4,454&lt;/strong&gt;&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><strong>N = 4,454</strong><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">moradia</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    alugada</td>
+<td headers="stat_0" class="gt_row gt_center">973 (22%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    outras</td>
+<td headers="stat_0" class="gt_row gt_center">319 (7.2%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    pais</td>
+<td headers="stat_0" class="gt_row gt_center">783 (18%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    priv</td>
+<td headers="stat_0" class="gt_row gt_center">246 (5.6%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    própria</td>
+<td headers="stat_0" class="gt_row gt_center">2,107 (48%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_0" class="gt_row gt_center">26</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">status</td>
+<td headers="stat_0" class="gt_row gt_center"><br /></td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    bom</td>
+<td headers="stat_0" class="gt_row gt_center">3,200 (72%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    ruim</td>
+<td headers="stat_0" class="gt_row gt_center">1,254 (28%)</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">idade</td>
+<td headers="stat_0" class="gt_row gt_center">36 (28, 45)</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="2"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> n (%); Median (IQR)</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="tabelas.html#cb38-1" tabindex="-1"></a>dados <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="tabelas.html#cb38-2" tabindex="-1"></a>  <span class="fu">select</span>(moradia,renda) <span class="sc">%&gt;%</span> </span>
+<span id="cb38-3"><a href="tabelas.html#cb38-3" tabindex="-1"></a>  <span class="fu">tbl_summary</span>(<span class="at">by=</span>moradia,</span>
+<span id="cb38-4"><a href="tabelas.html#cb38-4" tabindex="-1"></a>              <span class="at">statistic=</span><span class="fu">all_continuous</span>() <span class="sc">~</span> <span class="fu">c</span>(<span class="st">&quot;{mean}&quot;</span>))</span></code></pre></div>
+<pre><code>## 26 observations missing `moradia` have been removed. To include these observations, use `forcats::fct_na_value_to_level()` on `moradia` column before passing to `tbl_summary()`.</code></pre>
+<div id="slhzcypmds" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#slhzcypmds table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#slhzcypmds thead, #slhzcypmds tbody, #slhzcypmds tfoot, #slhzcypmds tr, #slhzcypmds td, #slhzcypmds th {
+  border-style: none;
+}
+
+#slhzcypmds p {
+  margin: 0;
+  padding: 0;
+}
+
+#slhzcypmds .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#slhzcypmds .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#slhzcypmds .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#slhzcypmds .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#slhzcypmds .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#slhzcypmds .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#slhzcypmds .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#slhzcypmds .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#slhzcypmds .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#slhzcypmds .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#slhzcypmds .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#slhzcypmds .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#slhzcypmds .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#slhzcypmds .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#slhzcypmds .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slhzcypmds .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#slhzcypmds .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#slhzcypmds .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#slhzcypmds .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slhzcypmds .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#slhzcypmds .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slhzcypmds .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#slhzcypmds .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slhzcypmds .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#slhzcypmds .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#slhzcypmds .gt_left {
+  text-align: left;
+}
+
+#slhzcypmds .gt_center {
+  text-align: center;
+}
+
+#slhzcypmds .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#slhzcypmds .gt_font_normal {
+  font-weight: normal;
+}
+
+#slhzcypmds .gt_font_bold {
+  font-weight: bold;
+}
+
+#slhzcypmds .gt_font_italic {
+  font-style: italic;
+}
+
+#slhzcypmds .gt_super {
+  font-size: 65%;
+}
+
+#slhzcypmds .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#slhzcypmds .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#slhzcypmds .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#slhzcypmds .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#slhzcypmds .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#slhzcypmds .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#slhzcypmds .gt_indent_5 {
+  text-indent: 25px;
+}
+</style>
+<table class="gt_table" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+  <thead>
+    <tr class="gt_col_headings">
+      <th class="gt_col_heading gt_columns_bottom_border gt_left" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;Characteristic&lt;/strong&gt;"><strong>Characteristic</strong></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;alugada&lt;/strong&gt;, N = 973&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><strong>alugada</strong>, N = 973<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;outras&lt;/strong&gt;, N = 319&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><strong>outras</strong>, N = 319<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;pais&lt;/strong&gt;, N = 783&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><strong>pais</strong>, N = 783<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;priv&lt;/strong&gt;, N = 246&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><strong>priv</strong>, N = 246<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" scope="col" id="&lt;strong&gt;própria&lt;/strong&gt;, N = 2,107&lt;span class=&quot;gt_footnote_marks&quot; style=&quot;white-space:nowrap;font-style:italic;font-weight:normal;&quot;&gt;&lt;sup&gt;1&lt;/sup&gt;&lt;/span&gt;"><strong>própria</strong>, N = 2,107<span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span></th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td headers="label" class="gt_row gt_left">renda</td>
+<td headers="stat_1" class="gt_row gt_center">141</td>
+<td headers="stat_2" class="gt_row gt_center">129</td>
+<td headers="stat_3" class="gt_row gt_center">120</td>
+<td headers="stat_4" class="gt_row gt_center">137</td>
+<td headers="stat_5" class="gt_row gt_center">153</td></tr>
+    <tr><td headers="label" class="gt_row gt_left">    Unknown</td>
+<td headers="stat_1" class="gt_row gt_center">86</td>
+<td headers="stat_2" class="gt_row gt_center">55</td>
+<td headers="stat_3" class="gt_row gt_center">59</td>
+<td headers="stat_4" class="gt_row gt_center">16</td>
+<td headers="stat_5" class="gt_row gt_center">161</td></tr>
+  </tbody>
+  
+  <tfoot class="gt_footnotes">
+    <tr>
+      <td class="gt_footnote" colspan="6"><span class="gt_footnote_marks" style="white-space:nowrap;font-style:italic;font-weight:normal;"><sup>1</sup></span> Mean</td>
+    </tr>
+  </tfoot>
+</table>
+</div>
+</div>
+</div>
+<!-- </div> -->
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="trabalhando-com-nas.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="aula-3.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
