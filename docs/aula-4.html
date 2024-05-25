@@ -1,0 +1,732 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 5 Aula 4 | Introdução ao R</title>
+  <meta name="description" content="Chapter 5 Aula 4 | Introdução ao R" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 5 Aula 4 | Introdução ao R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 5 Aula 4 | Introdução ao R" />
+  
+  
+  
+
+<meta name="author" content="Eugênia Cerqueira" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="aula-3.html"/>
+<link rel="next" href="aula-5.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">A Minimal Book Example</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introdução</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#para-que-usar-o-r"><i class="fa fa-check"></i><b>1.1</b> Para que usar o R?</a></li>
+<li class="chapter" data-level="1.2" data-path="index.html"><a href="index.html#instalação"><i class="fa fa-check"></i><b>1.2</b> Instalação</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="aula-1.html"><a href="aula-1.html"><i class="fa fa-check"></i><b>2</b> Aula 1</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="aula-1.html"><a href="aula-1.html#interface"><i class="fa fa-check"></i><b>2.1</b> Interface</a></li>
+<li class="chapter" data-level="2.2" data-path="aula-1.html"><a href="aula-1.html#instalando-pacotes"><i class="fa fa-check"></i><b>2.2</b> Instalando pacotes</a></li>
+<li class="chapter" data-level="2.3" data-path="aula-1.html"><a href="aula-1.html#carregando-pacotes"><i class="fa fa-check"></i><b>2.3</b> Carregando pacotes</a></li>
+<li class="chapter" data-level="2.4" data-path="aula-1.html"><a href="aula-1.html#carregar-arquivos"><i class="fa fa-check"></i><b>2.4</b> Carregar arquivos</a>
+<ul>
+<li class="chapter" data-level="2.4.1" data-path="aula-1.html"><a href="aula-1.html#arquivos-csv"><i class="fa fa-check"></i><b>2.4.1</b> Arquivos CSV</a></li>
+<li class="chapter" data-level="2.4.2" data-path="aula-1.html"><a href="aula-1.html#arquivos-excel"><i class="fa fa-check"></i><b>2.4.2</b> Arquivos Excel</a></li>
+<li class="chapter" data-level="2.4.3" data-path="aula-1.html"><a href="aula-1.html#arquivos-dta-spss-dat"><i class="fa fa-check"></i><b>2.4.3</b> Arquivos DTA, SPSS, Dat</a></li>
+</ul></li>
+<li class="chapter" data-level="2.5" data-path="aula-1.html"><a href="aula-1.html#tipos-de-arquivos-no-r"><i class="fa fa-check"></i><b>2.5</b> Tipos de arquivos no R</a>
+<ul>
+<li class="chapter" data-level="2.5.1" data-path="aula-1.html"><a href="aula-1.html#dataframe"><i class="fa fa-check"></i><b>2.5.1</b> Dataframe</a></li>
+</ul></li>
+<li class="chapter" data-level="2.6" data-path="aula-1.html"><a href="aula-1.html#tipos-de-variáveis"><i class="fa fa-check"></i><b>2.6</b> Tipos de variáveis</a></li>
+<li class="chapter" data-level="2.7" data-path="aula-1.html"><a href="aula-1.html#exportar-arquivos"><i class="fa fa-check"></i><b>2.7</b> Exportar arquivos</a>
+<ul>
+<li class="chapter" data-level="2.7.1" data-path="aula-1.html"><a href="aula-1.html#objetos-rds"><i class="fa fa-check"></i><b>2.7.1</b> Objetos RDS</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="aula-2.html"><a href="aula-2.html"><i class="fa fa-check"></i><b>3</b> Aula 2</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="aula-2.html"><a href="aula-2.html#resumo-de-variáveis"><i class="fa fa-check"></i><b>3.1</b> Resumo de variáveis</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="aula-2.html"><a href="aula-2.html#variáveis-quantitativas"><i class="fa fa-check"></i><b>3.1.1</b> Variáveis quantitativas</a></li>
+<li class="chapter" data-level="3.1.2" data-path="aula-2.html"><a href="aula-2.html#variáveis-qualitativas"><i class="fa fa-check"></i><b>3.1.2</b> Variáveis qualitativas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="aula-2.html"><a href="aula-2.html#trabalhando-com-nas"><i class="fa fa-check"></i><b>3.2</b> Trabalhando com NAs</a></li>
+<li class="chapter" data-level="3.3" data-path="aula-2.html"><a href="aula-2.html#tabelas"><i class="fa fa-check"></i><b>3.3</b> Tabelas</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="aula-2.html"><a href="aula-2.html#função-table"><i class="fa fa-check"></i><b>3.3.1</b> Função table</a></li>
+<li class="chapter" data-level="3.3.2" data-path="aula-2.html"><a href="aula-2.html#pacote-pollster"><i class="fa fa-check"></i><b>3.3.2</b> Pacote pollster</a></li>
+<li class="chapter" data-level="3.3.3" data-path="aula-2.html"><a href="aula-2.html#pacote-dplyr"><i class="fa fa-check"></i><b>3.3.3</b> Pacote dplyr</a></li>
+<li class="chapter" data-level="3.3.4" data-path="aula-2.html"><a href="aula-2.html#pacote-gt"><i class="fa fa-check"></i><b>3.3.4</b> Pacote GT</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="aula-3.html"><a href="aula-3.html"><i class="fa fa-check"></i><b>4</b> Aula 3</a>
+<ul>
+<li class="chapter" data-level="4.1" data-path="aula-3.html"><a href="aula-3.html#criando-variáveis"><i class="fa fa-check"></i><b>4.1</b> Criando variáveis</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="aula-3.html"><a href="aula-3.html#criando-uma-variável"><i class="fa fa-check"></i><b>4.1.1</b> Criando uma variável</a></li>
+<li class="chapter" data-level="4.1.2" data-path="aula-3.html"><a href="aula-3.html#usando-o-comando-ifelse"><i class="fa fa-check"></i><b>4.1.2</b> Usando o comando ifelse</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="aula-3.html"><a href="aula-3.html#filtrar"><i class="fa fa-check"></i><b>4.2</b> Filtrar</a></li>
+<li class="chapter" data-level="4.3" data-path="aula-3.html"><a href="aula-3.html#remover-dados"><i class="fa fa-check"></i><b>4.3</b> Remover dados</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="aula-3.html"><a href="aula-3.html#remover-dados-na"><i class="fa fa-check"></i><b>4.3.1</b> Remover dados na</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="aula-3.html"><a href="aula-3.html#renomear-variáveis"><i class="fa fa-check"></i><b>4.4</b> Renomear variáveis</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="aula-4.html"><a href="aula-4.html"><i class="fa fa-check"></i><b>5</b> Aula 4</a>
+<ul>
+<li class="chapter" data-level="5.1" data-path="aula-4.html"><a href="aula-4.html#junção-de-dados"><i class="fa fa-check"></i><b>5.1</b> Junção de dados</a>
+<ul>
+<li class="chapter" data-level="5.1.1" data-path="aula-4.html"><a href="aula-4.html#união-de-dados"><i class="fa fa-check"></i><b>5.1.1</b> União de dados</a></li>
+<li class="chapter" data-level="5.1.2" data-path="aula-4.html"><a href="aula-4.html#cruzamento-de-dados"><i class="fa fa-check"></i><b>5.1.2</b> Cruzamento de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="5.2" data-path="aula-4.html"><a href="aula-4.html#remover-dados-duplicados"><i class="fa fa-check"></i><b>5.2</b> Remover dados duplicados</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="aula-5.html"><a href="aula-5.html"><i class="fa fa-check"></i><b>6</b> Aula 5</a>
+<ul>
+<li class="chapter" data-level="6.1" data-path="aula-5.html"><a href="aula-5.html#visualização-de-variáveis"><i class="fa fa-check"></i><b>6.1</b> Visualização de variáveis</a>
+<ul>
+<li class="chapter" data-level="6.1.1" data-path="aula-5.html"><a href="aula-5.html#pacote-ggplot2"><i class="fa fa-check"></i><b>6.1.1</b> Pacote ggplot2</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="glossário.html"><a href="glossário.html"><i class="fa fa-check"></i><b>7</b> Glossário</a></li>
+<li class="chapter" data-level="8" data-path="pacotes.html"><a href="pacotes.html"><i class="fa fa-check"></i><b>8</b> Pacotes</a>
+<ul>
+<li class="chapter" data-level="8.1" data-path="pacotes.html"><a href="pacotes.html#dplyr"><i class="fa fa-check"></i><b>8.1</b> dplyr</a></li>
+<li class="chapter" data-level="8.2" data-path="pacotes.html"><a href="pacotes.html#ggplot"><i class="fa fa-check"></i><b>8.2</b> ggplot</a></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="cheatsheets.html"><a href="cheatsheets.html"><i class="fa fa-check"></i><b>9</b> Cheatsheets</a></li>
+<li class="chapter" data-level="10" data-path="referências.html"><a href="referências.html"><i class="fa fa-check"></i><b>10</b> Referências</a></li>
+<li class="chapter" data-level="11" data-path="avaliação.html"><a href="avaliação.html"><i class="fa fa-check"></i><b>11</b> Avaliação</a></li>
+<li class="chapter" data-level="12" data-path="hello-bookdown.html"><a href="hello-bookdown.html"><i class="fa fa-check"></i><b>12</b> Hello bookdown</a>
+<ul>
+<li class="chapter" data-level="12.1" data-path="hello-bookdown.html"><a href="hello-bookdown.html#a-section"><i class="fa fa-check"></i><b>12.1</b> A section</a>
+<ul>
+<li class="chapter" data-level="" data-path="hello-bookdown.html"><a href="hello-bookdown.html#an-unnumbered-section"><i class="fa fa-check"></i>An unnumbered section</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="13" data-path="cross.html"><a href="cross.html"><i class="fa fa-check"></i><b>13</b> Cross-references</a>
+<ul>
+<li class="chapter" data-level="13.1" data-path="cross.html"><a href="cross.html#chapters-and-sub-chapters"><i class="fa fa-check"></i><b>13.1</b> Chapters and sub-chapters</a></li>
+<li class="chapter" data-level="13.2" data-path="cross.html"><a href="cross.html#captioned-figures-and-tables"><i class="fa fa-check"></i><b>13.2</b> Captioned figures and tables</a></li>
+</ul></li>
+<li class="chapter" data-level="14" data-path="parts.html"><a href="parts.html"><i class="fa fa-check"></i><b>14</b> Parts</a></li>
+<li class="chapter" data-level="15" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html"><i class="fa fa-check"></i><b>15</b> Footnotes and citations</a>
+<ul>
+<li class="chapter" data-level="15.1" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#footnotes"><i class="fa fa-check"></i><b>15.1</b> Footnotes</a></li>
+<li class="chapter" data-level="15.2" data-path="footnotes-and-citations.html"><a href="footnotes-and-citations.html#citations"><i class="fa fa-check"></i><b>15.2</b> Citations</a></li>
+</ul></li>
+<li class="chapter" data-level="16" data-path="blocks.html"><a href="blocks.html"><i class="fa fa-check"></i><b>16</b> Blocks</a>
+<ul>
+<li class="chapter" data-level="16.1" data-path="blocks.html"><a href="blocks.html#equations"><i class="fa fa-check"></i><b>16.1</b> Equations</a></li>
+<li class="chapter" data-level="16.2" data-path="blocks.html"><a href="blocks.html#theorems-and-proofs"><i class="fa fa-check"></i><b>16.2</b> Theorems and proofs</a></li>
+<li class="chapter" data-level="16.3" data-path="blocks.html"><a href="blocks.html#callout-blocks"><i class="fa fa-check"></i><b>16.3</b> Callout blocks</a></li>
+</ul></li>
+<li class="chapter" data-level="17" data-path="sharing-your-book.html"><a href="sharing-your-book.html"><i class="fa fa-check"></i><b>17</b> Sharing your book</a>
+<ul>
+<li class="chapter" data-level="17.1" data-path="sharing-your-book.html"><a href="sharing-your-book.html#publishing"><i class="fa fa-check"></i><b>17.1</b> Publishing</a></li>
+<li class="chapter" data-level="17.2" data-path="sharing-your-book.html"><a href="sharing-your-book.html#pages"><i class="fa fa-check"></i><b>17.2</b> 404 pages</a></li>
+<li class="chapter" data-level="17.3" data-path="sharing-your-book.html"><a href="sharing-your-book.html#metadata-for-sharing"><i class="fa fa-check"></i><b>17.3</b> Metadata for sharing</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Introdução ao R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="aula-4" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">Chapter 5</span> Aula 4<a href="aula-4.html#aula-4" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div id="junção-de-dados" class="section level2 hasAnchor" number="5.1">
+<h2><span class="header-section-number">5.1</span> Junção de dados<a href="aula-4.html#junção-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Existem duas grandes formas de junção de dados: UNIÃO e CRUZAMENTO.</p>
+<p>Para que uma união seja possível, os dois conjuntos de dados precisam ter os mesmos campos. Para que um cruzamento seja possível, os dois conjuntos precisam ter pelo menos um campo em comum.</p>
+<div id="união-de-dados" class="section level3 hasAnchor" number="5.1.1">
+<h3><span class="header-section-number">5.1.1</span> União de dados<a href="aula-4.html#união-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="juntar-linhas" class="section level4 hasAnchor" number="5.1.1.1">
+<h4><span class="header-section-number">5.1.1.1</span> Juntar linhas<a href="aula-4.html#juntar-linhas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><br>
+A união de dados é mais intuitiva. Basta ter a mesma quantidade de campos e que estes estejam “alinhados.” A função mais usada para isso é o famoso bind_rows() (Row Bind). Caso os campos tenham exatamente os mesmos nomes e tipo, o bind_rows() consegue fazer a união perfeitamente.
+<br>
+Vamos testar com dois dataframes referentes a dados Airbnb em Minas Gerais. Queremos juntar a tabela referente aos dados de Belo Horizonte com a tabela de dados sobre Ouro Preto. Para isso vamos, primeiramente ler os arquivos:
+<br></p>
+<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="aula-4.html#cb57-1" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb58-1"><a href="aula-4.html#cb58-1" tabindex="-1"></a>BHair<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;/Users/eugeniaviana/Documents/Documents/Eugenia/Sociologia/MQ/Aula 4/BHairbnb.csv&quot;</span>)</span>
+<span id="cb58-2"><a href="aula-4.html#cb58-2" tabindex="-1"></a>OPair<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;/Users/eugeniaviana/Documents/Documents/Eugenia/Sociologia/MQ/Aula 4/OPairbnb.csv&quot;</span>)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="aula-4.html#cb59-1" tabindex="-1"></a>airbnb<span class="ot">&lt;-</span><span class="fu">bind_rows</span>(BHair,OPair)</span></code></pre></div>
+<p><br></p>
+<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb60-1"><a href="aula-4.html#cb60-1" tabindex="-1"></a><span class="fu">summary</span>(airbnb)</span></code></pre></div>
+<pre><code>##        X              url              address           location.lat   
+##  Min.   :  1.00   Length:200         Length:200         Min.   :-20.55  
+##  1st Qu.: 25.75   Class :character   Class :character   1st Qu.:-20.39  
+##  Median : 50.50   Mode  :character   Mode  :character   Median :-20.19  
+##  Mean   : 50.50                                         Mean   :-20.16  
+##  3rd Qu.: 75.25                                         3rd Qu.:-19.90  
+##  Max.   :100.00                                         Max.   :-19.68  
+##   location.lng   
+##  Min.   :-44.19  
+##  1st Qu.:-43.99  
+##  Median :-43.78  
+##  Mean   :-43.76  
+##  3rd Qu.:-43.52  
+##  Max.   :-43.33</code></pre>
+</div>
+<div id="juntar-colunas" class="section level4 hasAnchor" number="5.1.1.2">
+<h4><span class="header-section-number">5.1.1.2</span> Juntar colunas<a href="aula-4.html#juntar-colunas" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+<p><br>
+Para ilustrar operações de junção, consideraremos primeiro o tipo mais comum, uma “junção à esquerda”(left_join). No esquema abaixo, os dois data frames compartilham uma coluna comum, V1. Podemos combinar os dois data frames em um único data frame, correspondendo as linhas do primeiro data frame com as do segundo data frame que compartilham o mesmo valor da variável V1.
+<br>
+<br>
+<img src="../leftjoin.png" width="90%" />
+<br>
+Vamos unir os dados de Airbnb sobre BH com uma nova coluna, informando o tipo de locação. Primeiro, vamos carregar o segundo arquivo.
+<br></p>
+<div class="sourceCode" id="cb62"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb62-1"><a href="aula-4.html#cb62-1" tabindex="-1"></a>BHair2<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">&quot;/Users/eugeniaviana/Documents/Documents/Eugenia/Sociologia/MQ/Aula 4/BHair.csv&quot;</span>)</span>
+<span id="cb62-2"><a href="aula-4.html#cb62-2" tabindex="-1"></a><span class="fu">head</span>(BHair2)</span></code></pre></div>
+<pre><code>##   X                                              url             roomType
+## 1 1            https://www.airbnb.com/rooms/15677909   Entire rental unit
+## 2 2 https://www.airbnb.com/rooms/1011116016079460730 Private room in home
+## 3 3 https://www.airbnb.com/rooms/1048772607162009300          Entire home
+## 4 4             https://www.airbnb.com/rooms/6687784   Entire rental unit
+## 5 5 https://www.airbnb.com/rooms/1150086536583269687          Entire home
+## 6 6 https://www.airbnb.com/rooms/1085731432923449528          Entire home</code></pre>
+<p>Agora vamos unir os dois arquivos</p>
+<div class="sourceCode" id="cb64"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb64-1"><a href="aula-4.html#cb64-1" tabindex="-1"></a><span class="fu">left_join</span>(BHair,BHair2, <span class="at">by=</span><span class="st">&quot;url&quot;</span>)</span></code></pre></div>
+<pre><code>##     X.x                                              url
+## 1     1            https://www.airbnb.com/rooms/15677909
+## 2     2 https://www.airbnb.com/rooms/1011116016079460730
+## 3     3 https://www.airbnb.com/rooms/1048772607162009300
+## 4     4             https://www.airbnb.com/rooms/6687784
+## 5     5 https://www.airbnb.com/rooms/1150086536583269687
+## 6     6 https://www.airbnb.com/rooms/1085731432923449528
+## 7     7  https://www.airbnb.com/rooms/825640321009966341
+## 8     8  https://www.airbnb.com/rooms/820977218643665725
+## 9     9 https://www.airbnb.com/rooms/1136518508115343403
+## 10   10  https://www.airbnb.com/rooms/906427794641339249
+## 11   11  https://www.airbnb.com/rooms/910220951523307628
+## 12   12  https://www.airbnb.com/rooms/562066526358628124
+## 13   13  https://www.airbnb.com/rooms/836905206106125800
+## 14   14            https://www.airbnb.com/rooms/37280161
+## 15   15 https://www.airbnb.com/rooms/1117383770709754386
+## 16   16  https://www.airbnb.com/rooms/876547458561269566
+## 17   17            https://www.airbnb.com/rooms/14178113
+## 18   18            https://www.airbnb.com/rooms/50725885
+## 19   19  https://www.airbnb.com/rooms/993418205864569663
+## 20   20 https://www.airbnb.com/rooms/1086201037836456245
+## 21   21 https://www.airbnb.com/rooms/1080636109317462333
+## 22   22            https://www.airbnb.com/rooms/52260621
+## 23   23            https://www.airbnb.com/rooms/32385591
+## 24   24 https://www.airbnb.com/rooms/1019002964842986556
+## 25   25 https://www.airbnb.com/rooms/1040594193718430302
+## 26   26 https://www.airbnb.com/rooms/1157232129292028155
+## 27   27 https://www.airbnb.com/rooms/1128213219808671586
+## 28   28            https://www.airbnb.com/rooms/47187114
+## 29   29  https://www.airbnb.com/rooms/960196658116059828
+## 30   30 https://www.airbnb.com/rooms/1144110518582467483
+## 31   31 https://www.airbnb.com/rooms/1131295220446831983
+## 32   32  https://www.airbnb.com/rooms/823373718355347804
+## 33   33 https://www.airbnb.com/rooms/1075390521062087708
+## 34   34            https://www.airbnb.com/rooms/51247673
+## 35   35 https://www.airbnb.com/rooms/1142795653470025552
+## 36   36            https://www.airbnb.com/rooms/38095244
+## 37   37            https://www.airbnb.com/rooms/46730613
+## 38   38            https://www.airbnb.com/rooms/36200285
+## 39   39            https://www.airbnb.com/rooms/53738319
+## 40   40            https://www.airbnb.com/rooms/42147050
+## 41   41 https://www.airbnb.com/rooms/1157130584891972951
+## 42   42            https://www.airbnb.com/rooms/29093538
+## 43   43 https://www.airbnb.com/rooms/1082000964201371514
+## 44   44 https://www.airbnb.com/rooms/1149115749856809033
+## 45   45 https://www.airbnb.com/rooms/1147355536033186655
+## 46   46  https://www.airbnb.com/rooms/759519129222594937
+## 47   47  https://www.airbnb.com/rooms/920832993049213084
+## 48   48  https://www.airbnb.com/rooms/774509660121154145
+## 49   49  https://www.airbnb.com/rooms/773412768071142366
+## 50   50 https://www.airbnb.com/rooms/1081961409265708663
+## 51   51  https://www.airbnb.com/rooms/963984686180475787
+## 52   52  https://www.airbnb.com/rooms/931761848303773522
+## 53   53  https://www.airbnb.com/rooms/774870953336947053
+## 54   54  https://www.airbnb.com/rooms/939201684938714435
+## 55   55            https://www.airbnb.com/rooms/51878874
+## 56   56  https://www.airbnb.com/rooms/774510320681288518
+## 57   57 https://www.airbnb.com/rooms/1040831166740270070
+## 58   58  https://www.airbnb.com/rooms/788118103399347581
+## 59   59            https://www.airbnb.com/rooms/49583836
+## 60   60            https://www.airbnb.com/rooms/46279172
+## 61   61            https://www.airbnb.com/rooms/26298268
+## 62   62            https://www.airbnb.com/rooms/48089692
+## 63   63            https://www.airbnb.com/rooms/48090269
+## 64   64            https://www.airbnb.com/rooms/47596529
+## 65   65  https://www.airbnb.com/rooms/623165293751387327
+## 66   66            https://www.airbnb.com/rooms/49364323
+## 67   67            https://www.airbnb.com/rooms/49560632
+## 68   68             https://www.airbnb.com/rooms/7402294
+## 69   69  https://www.airbnb.com/rooms/822366864542195747
+## 70   70 https://www.airbnb.com/rooms/1084159694238840147
+## 71   71            https://www.airbnb.com/rooms/45933954
+## 72   72            https://www.airbnb.com/rooms/38566020
+## 73   73            https://www.airbnb.com/rooms/53963150
+## 74   74             https://www.airbnb.com/rooms/2286215
+## 75   75            https://www.airbnb.com/rooms/17364894
+## 76   76  https://www.airbnb.com/rooms/831838093592568957
+## 77   77  https://www.airbnb.com/rooms/736108838473686339
+## 78   78  https://www.airbnb.com/rooms/774721173889499781
+## 79   79 https://www.airbnb.com/rooms/1071946349935202195
+## 80   80 https://www.airbnb.com/rooms/1107131277455874085
+## 81   81            https://www.airbnb.com/rooms/35027258
+## 82   82 https://www.airbnb.com/rooms/1076848810499431922
+## 83   83             https://www.airbnb.com/rooms/9631029
+## 84   84 https://www.airbnb.com/rooms/1011091074931378184
+## 85   85            https://www.airbnb.com/rooms/32166098
+## 86   86 https://www.airbnb.com/rooms/1098580611208270478
+## 87   87 https://www.airbnb.com/rooms/1097902572545234214
+## 88   88            https://www.airbnb.com/rooms/48005113
+## 89   89            https://www.airbnb.com/rooms/50360185
+## 90   90 https://www.airbnb.com/rooms/1085334794707904867
+## 91   91  https://www.airbnb.com/rooms/742602572496183895
+## 92   92  https://www.airbnb.com/rooms/561379340683951008
+## 93   93  https://www.airbnb.com/rooms/579090181069213103
+## 94   94             https://www.airbnb.com/rooms/2562982
+## 95   95            https://www.airbnb.com/rooms/20379551
+## 96   96  https://www.airbnb.com/rooms/803807922942624193
+## 97   97 https://www.airbnb.com/rooms/1068894176302982404
+## 98   98 https://www.airbnb.com/rooms/1044197617562612186
+## 99   99             https://www.airbnb.com/rooms/2375659
+## 100 100  https://www.airbnb.com/rooms/811523164163197128
+##                                           address location.lat location.lng X.y
+## 1            Belo Horizonte, Minas Gerais, Brazil    -19.99636    -44.04467   1
+## 2            Belo Horizonte, Minas Gerais, Brazil    -19.98734    -44.03149   2
+## 3            Belo Horizonte, Minas Gerais, Brazil    -19.99400    -44.01400   3
+## 4            Belo Horizonte, Minas Gerais, Brazil    -19.89753    -44.01633   4
+## 5                 Nova Lima, Minas Gerais, Brazil    -20.05900    -43.98900   5
+## 6                 Nova Lima, Minas Gerais, Brazil    -20.05540    -43.98328   6
+## 7            Belo Horizonte, Minas Gerais, Brazil    -20.00058    -43.97209   7
+## 8            Belo Horizonte, Minas Gerais, Brazil    -20.00064    -43.97230   8
+## 9            Belo Horizonte, Minas Gerais, Brazil    -20.01300    -44.01200   9
+## 10           Belo Horizonte, Minas Gerais, Brazil    -19.99800    -44.02000  10
+## 11           Belo Horizonte, Minas Gerais, Brazil    -19.99899    -44.02107  11
+## 12           Belo Horizonte, Minas Gerais, Brazil    -20.01025    -44.02337  12
+## 13           Belo Horizonte, Minas Gerais, Brazil    -20.00059    -43.97313  13
+## 14        Solar do Barreiro, Minas Gerais, Brazil    -20.01371    -44.01575  14
+## 15           Belo Horizonte, Minas Gerais, Brazil    -19.87799    -44.01335  15
+## 16           Belo Horizonte, Minas Gerais, Brazil    -19.85700    -44.01000  16
+## 17           Belo Horizonte, Minas Gerais, Brazil    -19.83376    -44.01463  17
+## 18          Santa Terezinha, Minas Gerais, Brazil    -19.86097    -44.00921  18
+## 19           Belo Horizonte, Minas Gerais, Brazil    -19.99848    -43.99425  19
+## 20           Belo Horizonte, Minas Gerais, Brazil    -19.92656    -44.00118  20
+## 21           Belo Horizonte, Minas Gerais, Brazil    -19.92800    -44.00200  21
+## 22            João Pinheiro, Minas Gerais, Brazil    -19.93200    -44.00000  22
+## 23               Belo Horizonte, Pampulha, Brazil    -19.85000    -44.00400  23
+## 24           Belo Horizonte, Minas Gerais, Brazil    -19.87800    -44.00100  24
+## 25           Belo Horizonte, Minas Gerais, Brazil    -19.87800    -44.00100  25
+## 26           Belo Horizonte, Minas Gerais, Brazil    -19.88797    -44.00249  26
+## 27           Belo Horizonte, Minas Gerais, Brazil    -19.88800    -44.00200  27
+## 28                    Trevo, Minas Gerais, Brazil    -19.83517    -44.00431  28
+## 29           Belo Horizonte, Minas Gerais, Brazil    -19.88357    -43.99397  29
+## 30           Belo Horizonte, Minas Gerais, Brazil    -19.87600    -43.99400  30
+## 31           Belo Horizonte, Minas Gerais, Brazil    -19.88536    -43.99364  31
+## 32           Belo Horizonte, Minas Gerais, Brazil    -19.91833    -43.98967  32
+## 33           Belo Horizonte, Minas Gerais, Brazil    -19.92600    -43.98900  33
+## 34               Dom Cabral, Minas Gerais, Brazil    -19.92311    -43.99135  34
+## 35           Belo Horizonte, Minas Gerais, Brazil    -19.92500    -43.99100  35
+## 36      Coração Eucarístico, Minas Gerais, Brazil    -19.92589    -43.99229  36
+## 37             Vila Paquetá, Minas Gerais, Brazil    -19.86984    -43.99352  37
+## 38  Bandeirantes (Pampulha), Minas Gerais, Brazil    -19.86675    -43.99402  38
+## 39             Vila Paquetá, Minas Gerais, Brazil    -19.86970    -43.99391  39
+## 40      Coração Eucarístico, Minas Gerais, Brazil    -19.92440    -43.98944  40
+## 41           Belo Horizonte, Minas Gerais, Brazil    -19.83217    -43.99441  41
+## 42           Belo Horizonte, Minas Gerais, Brazil    -19.86676    -43.99327  42
+## 43           Belo Horizonte, Minas Gerais, Brazil    -19.85072    -43.98856  43
+## 44           Belo Horizonte, Minas Gerais, Brazil    -19.84400    -43.98500  44
+## 45           Belo Horizonte, Minas Gerais, Brazil    -19.84200    -43.98400  45
+## 46           Belo Horizonte, Minas Gerais, Brazil    -19.84083    -43.98412  46
+## 47           Belo Horizonte, Minas Gerais, Brazil    -19.84100    -43.98466  47
+## 48           Belo Horizonte, Minas Gerais, Brazil    -19.84685    -43.98255  48
+## 49           Belo Horizonte, Minas Gerais, Brazil    -19.84098    -43.98953  49
+## 50           Belo Horizonte, Minas Gerais, Brazil    -19.85068    -43.98691  50
+## 51           Belo Horizonte, Minas Gerais, Brazil    -19.84230    -43.98198  51
+## 52           Belo Horizonte, Minas Gerais, Brazil    -19.84081    -43.98430  52
+## 53           Belo Horizonte, Minas Gerais, Brazil    -19.84000    -43.99100  53
+## 54           Belo Horizonte, Minas Gerais, Brazil    -19.84274    -43.98308  54
+## 55         Jardim Atlântico, Minas Gerais, Brazil    -19.84274    -43.98266  55
+## 56           Belo Horizonte, Minas Gerais, Brazil    -19.84002    -43.99167  56
+## 57           Belo Horizonte, Minas Gerais, Brazil    -19.84263    -43.98633  57
+## 58           Belo Horizonte, Minas Gerais, Brazil    -19.84888    -43.98282  58
+## 59            Cidade Jardim, Minas Gerais, Brazil    -19.93772    -43.95189  59
+## 60          Santo Agostinho, Minas Gerais, Brazil    -19.92911    -43.94836  60
+## 61           Belo Horizonte, Minas Gerais, Brazil    -19.93098    -43.92354  61
+## 62          Santo Agostinho, Minas Gerais, Brazil    -19.93041    -43.94780  62
+## 63          Santo Agostinho, Minas Gerais, Brazil    -19.92872    -43.94822  63
+## 64         Vila Ipe Amarelo, Minas Gerais, Brazil    -19.81042    -44.14176  64
+## 65              Mangabeiras, Minas Gerais, Brazil    -19.95362    -43.91255  65
+## 66                 Ipiranga, Minas Gerais, Brazil    -19.88559    -43.93828  66
+## 67           Santa Efigênia, Minas Gerais, Brazil    -19.92479    -43.91383  67
+## 68           Belo Horizonte, Minas Gerais, Brazil    -19.93166    -43.95212  68
+## 69     Cidade de Brumadinho, Minas Gerais, Brazil    -20.08274    -44.03417  69
+## 70           Belo Horizonte, Minas Gerais, Brazil    -19.84803    -43.97366  70
+## 71                     Sion, Minas Gerais, Brazil    -19.95319    -43.93788  71
+## 72          Sagrada Família, Minas Gerais, Brazil    -19.89617    -43.92448  72
+## 73         Solar do Madeira, Minas Gerais, Brazil    -19.89277    -44.14223  73
+## 74           Belo Horizonte, Minas Gerais, Brazil    -19.97456    -43.97152  74
+## 75           Belo Horizonte, Minas Gerais, Brazil    -19.91600    -43.94100  75
+## 76           Belo Horizonte, Minas Gerais, Brazil    -19.92353    -43.95468  76
+## 77           Belo Horizonte, Minas Gerais, Brazil    -19.85400    -43.99100  77
+## 78                 Contagem, Minas Gerais, Brazil    -19.89009    -44.11263  78
+## 79           Belo Horizonte, Minas Gerais, Brazil    -19.93074    -43.93637  79
+## 80           Belo Horizonte, Minas Gerais, Brazil    -19.84800    -43.97800  80
+## 81                 Contagem, Minas Gerais, Brazil    -19.91023    -44.14621  81
+## 82           Belo Horizonte, Minas Gerais, Brazil    -19.87300    -43.90200  82
+## 83           Belo Horizonte, Minas Gerais, Brazil    -19.93252    -43.93430  83
+## 84                Nova Lima, Minas Gerais, Brazil    -20.06137    -43.91572  84
+## 85                    Serra, Minas Gerais, Brazil    -19.93727    -43.91891  85
+## 86                Nova Lima, Minas Gerais, Brazil    -20.06300    -43.92900  86
+## 87                Nova Lima, Minas Gerais, Brazil    -20.10200    -43.92800  87
+## 88          Honório Bicalho, Minas Gerais, Brazil    -20.03407    -43.82358  88
+## 89               Esmeraldas, Minas Gerais, Brazil    -19.71359    -44.14285  89
+## 90           Belo Horizonte, Minas Gerais, Brazil    -19.89145    -43.92351  90
+## 91                 Contagem, Minas Gerais, Brazil    -19.96900    -44.02600  91
+## 92                    Betim, Minas Gerais, Brazil    -20.01433    -44.18778  92
+## 93                 Eldorado, Minas Gerais, Brazil    -19.93619    -44.03512  93
+## 94                 Contagem, Minas Gerais, Brazil    -19.87637    -44.02936  94
+## 95                    Serra, Minas Gerais, Brazil    -19.93741    -43.92012  95
+## 96         São José da Lapa, Minas Gerais, Brazil    -19.71014    -43.97917  96
+## 97                Rio Acima, Minas Gerais, Brazil    -20.05391    -43.79670  97
+## 98              Santa Luzia, Minas Gerais, Brazil    -19.68260    -43.79577  98
+## 99           Belo Horizonte, Minas Gerais, Brazil    -19.86502    -43.99078  99
+## 100        São José da Lapa, Minas Gerais, Brazil    -19.70987    -43.97924 100
+##                              roomType
+## 1                  Entire rental unit
+## 2                Private room in home
+## 3                         Entire home
+## 4                  Entire rental unit
+## 5                         Entire home
+## 6                         Entire home
+## 7                           Tiny home
+## 8                         Entire home
+## 9                  Entire rental unit
+## 10        Private room in rental unit
+## 11                 Entire rental unit
+## 12               Private room in home
+## 13                          Tiny home
+## 14                 Entire rental unit
+## 15         Private room in guesthouse
+## 16               Private room in home
+## 17                 Entire rental unit
+## 18  Private room in bed and breakfast
+## 19                 Entire rental unit
+## 20               Private room in home
+## 21               Private room in home
+## 22                 Entire rental unit
+## 23                        Entire home
+## 24               Private room in home
+## 25               Private room in home
+## 26                 Entire rental unit
+## 27                 Entire rental unit
+## 28                        Entire home
+## 29                 Entire rental unit
+## 30                 Entire rental unit
+## 31                 Entire rental unit
+## 32                 Entire rental unit
+## 33                 Entire rental unit
+## 34                 Entire rental unit
+## 35  Private room in bed and breakfast
+## 36               Private room in home
+## 37               Private room in loft
+## 38               Private room in home
+## 39          Entire serviced apartment
+## 40                 Entire rental unit
+## 41                        Entire home
+## 42               Private room in home
+## 43                  Entire guesthouse
+## 44        Private room in rental unit
+## 45                 Entire rental unit
+## 46                        Entire home
+## 47               Private room in home
+## 48        Private room in rental unit
+## 49              Private room in condo
+## 50                  Entire guesthouse
+## 51                        Entire home
+## 52                        Entire home
+## 53              Private room in condo
+## 54        Private room in rental unit
+## 55        Private room in rental unit
+## 56        Private room in rental unit
+## 57                        Entire home
+## 58                 Entire rental unit
+## 59                        Entire home
+## 60                 Entire rental unit
+## 61                 Entire rental unit
+## 62                 Entire rental unit
+## 63                 Entire rental unit
+## 64                        Entire home
+## 65                       Entire villa
+## 66                        Entire home
+## 67                 Entire rental unit
+## 68        Private room in rental unit
+## 69                        Entire home
+## 70                        Entire home
+## 71                 Entire rental unit
+## 72        Private room in rental unit
+## 73                     Entire cottage
+## 74                        Entire home
+## 75                        Entire loft
+## 76                 Entire rental unit
+## 77                        Entire home
+## 78                        Entire home
+## 79                 Entire rental unit
+## 80                        Entire home
+## 81                        Entire home
+## 82                        Entire home
+## 83                 Entire rental unit
+## 84                        Entire home
+## 85               Private room in home
+## 86                        Entire home
+## 87                        Entire home
+## 88                     Entire cottage
+## 89                     Entire cottage
+## 90                 Entire rental unit
+## 91                        Entire home
+## 92                     Entire cottage
+## 93        Private room in rental unit
+## 94                        Entire home
+## 95                       Entire place
+## 96                        Entire home
+## 97                  Entire guesthouse
+## 98                        Entire home
+## 99                        Entire home
+## 100                       Entire home</code></pre>
+<p>Another joining operation is the “inner join” in which only observations that are common to both data frames are included.</p>
+</div>
+<div id="merge" class="section level4 hasAnchor" number="5.1.1.3">
+<h4><span class="header-section-number">5.1.1.3</span> Merge<a href="aula-4.html#merge" class="anchor-section" aria-label="Anchor link to header"></a></h4>
+</div>
+</div>
+<div id="cruzamento-de-dados" class="section level3 hasAnchor" number="5.1.2">
+<h3><span class="header-section-number">5.1.2</span> Cruzamento de dados<a href="aula-4.html#cruzamento-de-dados" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Entenda chave como uma coluna que está presente da mesma forma em dois conjuntos de dados distintos. O conceito completo de chave é bem mais complexo que isto, mas, para começarmos a entender e usar os joins, basta usar essa intuição.</p>
+<p>Tendo esse conceito simplificado de chave em mente, a primeira coisa que se deve fazer quando for preciso cruzar dois conjuntos de dados é tentar identificar quais os campos chaves, ou seja, quais campos estão presentes nos dois grupos.</p>
+<p>O que acontece quando nem todos os códigos de um grupo estão no outro? E quando um grupo tem códigos repetidos em várias linhas? Para responder a essas e outras perguntas precisamos conhecer os diferentes tipos de joins. Existe pelo menos uma dezena de tipos de joins, mas 90% das vezes você precisará apenas dos tipos básicos que explicaremos a seguir. Usaremos o pacote dplyr para aplicar os joins. O R base possui a função merge() para joins,</p>
+<p>Inner Join (ou apenas Join)</p>
+<p>Trata-se do join mais simples, mais básico e mais usado dentre todos os outros tipos. O seu comportamento mantém no resultado apenas as linhas presentes nos dois conjuntos de dados que estão sendo cruzados. O inner join funciona da seguinte forma:</p>
+</div>
+</div>
+<div id="remover-dados-duplicados" class="section level2 hasAnchor" number="5.2">
+<h2><span class="header-section-number">5.2</span> Remover dados duplicados<a href="aula-4.html#remover-dados-duplicados" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Às vezes temos informações duplicadas em nossos bancos de dados e precisamos guardar apenas aqueles que apresentam valores únicos.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="aula-3.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="aula-5.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": "https://github.com/USERNAME/REPO/edit/BRANCH/index.Rmd",
+"text": "Edit"
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["_main.pdf", "_main.epub"],
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
